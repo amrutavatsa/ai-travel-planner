@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B2545">
+  <meta name="description" content="Plan a smarter short stay in Shivamogga with AI-assisted travel planning.">
+  <title>Travelwise — Plan your Shivamogga trip</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Travelwise home">
+        <span class="brand-mark"><span class="brand-mark-inner">T</span></span>
+        <span class="brand-copy">
+          <strong>travelwise</strong>
+          <small>YOUR JOURNEY, PLANNED</small>
+        </span>
+      </a>
+
+      <div class="nav-group">
+        <p class="nav-heading">WORKSPACE</p>
+        <nav class="nav-links">
+          <a class="nav-link active" href="#home" data-page="home" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">⌂</span> Home
+          </a>
+          <a class="nav-link" href="#plan" data-page="plan">
+            <span class="nav-icon" aria-hidden="true">＋</span> Plan a trip
+          </a>
+          <a class="nav-link" href="#trips" data-page="trips">
+            <span class="nav-icon" aria-hidden="true">▤</span> My trips
+          </a>
+          <a class="nav-link" href="#saved" data-page="saved">
+            <span class="nav-icon" aria-hidden="true">♡</span> Saved places
+          </a>
+        </nav>
+      </div>
+
+      <div class="nav-group">
+        <p class="nav-heading">DISCOVER</p>
+        <nav class="nav-links">
+          <a class="nav-link" href="#explore" data-page="explore">
+            <span class="nav-icon" aria-hidden="true">⌖</span> Explore Shivamogga
+          </a>
+        </nav>
+      </div>
+
+      <div class="nav-group">
+        <p class="nav-heading">YOUR ACCOUNT</p>
+        <nav class="nav-links">
+          <a class="nav-link" href="#profile" data-page="profile">
+            <span class="nav-icon" aria-hidden="true">♙</span> Profile
+          </a>
+          <a class="nav-link" href="#preferences" data-page="preferences">
+            <span class="nav-icon" aria-hidden="true">☷</span> Travel preferences
+          </a>
+          <a class="nav-link" href="#settings" data-page="settings">
+            <span class="nav-icon" aria-hidden="true">⚙</span> Settings
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="guest-card">
+          <div class="guest-avatar" aria-hidden="true">G</div>
+          <div class="guest-copy">
+            <strong>Guest traveller</strong>
+            <span>Trips aren't saved yet</span>
+          </div>
+          <span class="guest-dot" aria-hidden="true"></span>
+        </div>
+        <p class="sidebar-footnote">AI-assisted travel planning<br>Project prototype · v0.1</p>
+      </div>
+    </aside>
+
+    <main class="main-area" id="main-content">
+      <header class="topbar">
+        <button class="icon-button menu-toggle" id="menu-toggle"
+          type="button" aria-label="Open navigation" aria-expanded="false"
+          aria-controls="sidebar">☰</button>
+
+        <div class="breadcrumb">
+          <span>Workspace</span><span class="breadcrumb-separator">/</span>
+          <strong id="breadcrumb-current">Home</strong>
+        </div>
+
+        <div class="topbar-right">
+          <span class="prototype-label"><span></span> Prototype</span>
+          <button class="avatar-button" id="profile-shortcut" type="button"
+            aria-label="Open profile">G</button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="welcome-row" id="welcome-section">
+          <div>
+            <p class="eyebrow">YOUR NEXT ADVENTURE STARTS HERE</p>
+            <h1 id="page-title">Make every travel hour count.</h1>
+            <p class="page-intro" id="page-intro">
+              Plan a short stay in Shivamogga around the places you love,
+              the time you have, and the way you like to travel.
+            </p>
+          </div>
+          <div class="date-chip"><span aria-hidden="true">✦</span> Built for smarter short stays</div>
+        </section>
+
+        <section class="hero-banner" aria-label="Shivamogga destination">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="hero-tag"><span class="hero-tag-dot"></span> YOUR FEATURED DESTINATION</span>
+            <h2>Discover Shivamogga</h2>
+            <p>Waterfalls, green landscapes and memorable local experiences.</p>
+            <button class="button button-light" id="explore-button" type="button">
+              Explore the destination <span aria-hidden="true">→</span>
+            </button>
+          </div>
+          <div class="hero-location"><span aria-hidden="true">⌖</span> Karnataka, India</div>
+        </section>
+
+        <div class="content-grid">
+          <section class="panel trip-panel" id="trip-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="step-label">LET'S GET STARTED</span>
+                <h2>Plan your short stay</h2>
+                <p>Tell us a little about your trip. We'll use this information to build your plan.</p>
+              </div>
+              <span class="step-counter">01 <span>/ 01</span></span>
+            </div>
+
+            <form id="trip-form" novalidate>
+              <div class="field">
+                <label for="destination">Destination <span class="required">*</span></label>
+                <div class="input-wrap">
+                  <span class="field-icon" aria-hidden="true">⌖</span>
+                  <select id="destination" name="destination" required>
+                    <option value="Shivamogga">Shivamogga, Karnataka</option>
+                  </select>
+                </div>
+                <small class="field-help">This prototype currently supports Shivamogga.</small>
+              </div>
+
+              <div class="field">
+                <label for="starting-point">Where are you starting from?</label>
+                <div class="input-wrap">
+                  <span class="field-icon" aria-hidden="true">↗</span>
+                  <input id="starting-point" name="startingPoint" type="text"
+                    placeholder="e.g. Shivamogga bus stand">
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="trip-date">Start date <span class="required">*</span></label>
+                  <input id="trip-date" name="tripDate" type="date" required>
+                </div>
+                <div class="field">
+                  <label for="duration">Available time <span class="required">*</span></label>
+                  <select id="duration" name="duration" required>
+                    <option value="4">4 hours</option>
+                    <option value="6" selected>6 hours</option>
+                    <option value="8">8 hours</option>
+                    <option value="12">12 hours</option>
+                    <option value="24">1 full day</option>
+                    <option value="48">2 days</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="label-line">
+                  <label>What are you interested in?</label>
+                  <span class="optional-label">Choose all that apply</span>
+                </div>
+                <div class="interest-grid">
+                  <label class="interest-option">
+                    <input type="checkbox" name="interests" value="Nature" checked>
+                    <span class="interest-card"><span aria-hidden="true">🌿</span> Nature</span>
+                  </label>
+                  <label class="interest-option">
+                    <input type="checkbox" name="interests" value="Waterfalls">
+                    <span class="interest-card"><span aria-hidden="true">💧</span> Waterfalls</span>
+                  </label>
+                  <label class="interest-option">
+                    <input type="checkbox" name="interests" value="History">
+                    <span class="interest-card"><span aria-hidden="true">🏛️</span> History</span>
+                  </label>
+                  <label class="interest-option">
+                    <input type="checkbox" name="interests" value="Food">
+                    <span class="interest-card"><span aria-hidden="true">🍽️</span> Local food</span>
+                  </label>
+                  <label class="interest-option">
+                    <input type="checkbox" name="interests" value="Adventure">
+                    <span class="interest-card"><span aria-hidden="true">🥾</span> Adventure</span>
+                  </label>
+                  <label class="interest-option">
+                    <input type="checkbox" name="interests" value="Culture">
+                    <span class="interest-card"><span aria-hidden="true">🎭</span> Culture</span>
+                  </label>
+                </div>
+                <p class="field-error" id="interests-error" role="alert" hidden>Select at least one interest.</p>
+              </div>
+
+              <div class="field">
+                <label for="travel-pace">What pace feels right?</label>
+                <select id="travel-pace" name="travelPace">
+                  <option value="relaxed">Relaxed — fewer places, more time</option>
+                  <option value="balanced" selected>Balanced — a little of everything</option>
+                  <option value="packed">Packed — make the most of my time</option>
+                </select>
+              </div>
+
+              <div class="form-note">
+                <span aria-hidden="true">ⓘ</span>
+                <p>Your choices guide the plan. Travel times and crowd estimates will only be shown when supported by available data.</p>
+              </div>
+
+              <button class="button button-primary submit-button" type="submit" id="generate-button">
+                <span>Build my trip request</span><span aria-hidden="true">→</span>
+              </button>
+              <p class="privacy-note">No account required to try this prototype.</p>
+            </form>
+          </section>
+
+          <aside class="right-column">
+            <section class="panel why-panel">
+              <div class="small-panel-heading">
+                <span class="sparkle-icon" aria-hidden="true">✦</span>
+                <div>
+                  <h2>Planning, with purpose</h2>
+                  <p>What this project aims to help with</p>
+                </div>
+              </div>
+              <div class="benefit-list">
+                <div class="benefit-item">
+                  <span class="benefit-icon teal-icon" aria-hidden="true">◷</span>
+                  <div><strong>Make time work for you</strong><p>Fit visits into the time you actually have.</p></div>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon blue-icon" aria-hidden="true">⌖</span>
+                  <div><strong>Plan a sensible route</strong><p>Consider attraction order and estimated travel.</p></div>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon amber-icon" aria-hidden="true">✧</span>
+                  <div><strong>Match your interests</strong><p>Prioritise the experiences you care about.</p></div>
+                </div>
+              </div>
+              <p class="prototype-disclaimer">These are project goals. Recommendations and live-data features are not connected yet.</p>
+            </section>
+
+            <section class="panel destination-panel">
+              <div class="section-heading-row">
+                <div><h2>Places to discover</h2><p>Examples from the Shivamogga region</p></div>
+                <span class="sample-chip">SAMPLE</span>
+              </div>
+
+              <article class="place-card">
+                <div class="place-image place-jog" role="img" aria-label="Waterfall landscape"></div>
+                <div class="place-info">
+                  <span class="place-category">WATERFALL</span>
+                  <h3>Jog Falls</h3>
+                  <p>A famous waterfall in Karnataka.</p>
+                </div>
+                <button class="save-place" type="button" data-save-place="Jog Falls"
+                  aria-label="Save Jog Falls" aria-pressed="false">♡</button>
+              </article>
+
+              <article class="place-card">
+                <div class="place-image place-sacred" role="img" aria-label="Green forest landscape"></div>
+                <div class="place-info">
+                  <span class="place-category">NATURE</span>
+                  <h3>Nature &amp; green escapes</h3>
+                  <p>Explore the region's natural surroundings.</p>
+                </div>
+                <button class="save-place" type="button" data-save-place="Nature & green escapes"
+                  aria-label="Save Nature and green escapes" aria-pressed="false">♡</button>
+              </article>
+
+              <p class="sample-note">Illustrative cards. Verify exact locations, opening hours and access before travel.</p>
+            </section>
+          </aside>
+        </div>
+
+        <section class="result-panel" id="result-panel" aria-live="polite" hidden>
+          <div class="result-icon" aria-hidden="true">✓</div>
+          <div class="result-copy">
+            <span class="step-label">TRIP REQUEST CREATED LOCALLY</span>
+            <h2>Your preferences are ready.</h2>
+            <p id="result-summary"></p>
+            <p class="result-caveat">This is a local preview only. It has not generated an optimised itinerary or saved anything to a server yet.</p>
+            <button class="button button-secondary" id="edit-request" type="button">Edit my request</button>
+          </div>
+        </section>
+
+        <footer class="page-footer">
+          <span>Travelwise · Academic project prototype</span>
+          <span>Designed for useful, transparent travel planning.</span>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿# Java / Maven build output
+backend/target/
+**/target/
+
+# Local database credentials and environment files
+.env
+.env.*
+!.env.example
+
+# Local configuration backups
+*.before-mysql
+
+# Editor and operating-system files
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Python generated files and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Temporary logs
+*.log
+
+# Local frontend backups
+frontend/app.backup.js
